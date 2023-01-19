@@ -7,7 +7,7 @@
   select *
   from [treningi ]
 
-  --1. DATA CLEANING
+
    -- Data was downloaded into csv format
    -- To be able to perform operations on the data, it had to be properly formatted (for example, replacing periods with commas)
 
@@ -21,6 +21,20 @@
   where Calories is not null
   and [Max HR] > 0
   order by Calories desc, date desc
+  
+  Results:
+  
+  date	Calories	Max HR	Activity Type
+2021-03-27 10:07:02.000	850	167	Treadmill Running
+2019-10-28 19:03:03.000	784	165	Strength Training
+2021-06-04 18:57:17.000	749	162	Cycling
+2021-06-03 12:34:50.000	741	139	Cycling
+2020-11-08 14:27:43.000	685	182	Hiking
+2019-10-17 19:00:58.000	662	153	Strength Training
+2020-02-20 18:49:21.000	649	170	Strength Training
+2022-02-28 19:34:29.000	640	146	Strength Training
+2019-07-29 20:05:57.000	637	159	Strength Training
+2019-10-31 19:12:58.000	634	164	Strength Training
 
    -- 2.2 Total calories burned each month
   
@@ -28,6 +42,16 @@
   from [treningi ]
   GROUP BY month(date), year(date)
   order by Sum_Calories desc
+  
+  Results:
+
+Month_	Year	Sum_Calories
+3	2021	10818
+7	2019	9333
+12	2019	8755
+6	2019	8614
+6	2021	7819
+
 
   --2.3 Showing how the value of calories burned for strength training has changed over the past two years
   -- -- --(changes in training plans (change of plan October 2021, December 2021, June 2022, September 2022)
